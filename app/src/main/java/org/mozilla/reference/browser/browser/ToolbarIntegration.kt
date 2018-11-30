@@ -8,7 +8,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import android.content.Context
-import mozilla.components.browser.domains.autocomplete.DomainAutocompleteProvider
+import mozilla.components.browser.domains.DomainAutoCompleteProvider
+import mozilla.components.browser.domains.DomainAutocompleteProvider
 import mozilla.components.browser.toolbar.BrowserToolbar
 import mozilla.components.concept.storage.HistoryStorage
 import mozilla.components.feature.toolbar.ToolbarAutocompleteFeature
@@ -22,6 +23,10 @@ class ToolbarIntegration(
     domainAutocompleteProvider: DomainAutocompleteProvider,
     sessionId: String? = null
 ) : LifecycleObserver {
+    private val autoCompleteProvider = DomainAutoCompleteProvider().apply {
+        initialize(context)
+    }
+
     init {
         toolbar.setMenuBuilder(context.components.menuBuilder)
 
@@ -30,6 +35,8 @@ class ToolbarIntegration(
             addDomainProvider(domainAutocompleteProvider)
         }
     }
+
+    private val toolbarAutoToolbarFeature = ToolbarAutocompleteFeature(toolbar)
 
     private val toolbarFeature: ToolbarFeature = ToolbarFeature(
         toolbar,
