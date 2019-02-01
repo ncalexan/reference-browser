@@ -51,6 +51,8 @@ android {
         // GeckoView release channels (For now only Nightly)
         geckoNightly { dimension "engine" }
 
+        system { dimension "engine" }
+
         // Processor architectures
         arm {
             dimension "abi"
@@ -188,6 +190,8 @@ dependencies {
     implementation Deps.mozilla_support_ktx
     implementation Deps.mozilla_lib_crash
     implementation Deps.thirdparty_sentry
+
+    systemImplementation Deps.mozilla_browser_engine_system
 
     geckoNightlyImplementation Deps.mozilla_browser_engine_gecko_nightly
     geckoNightlyArmImplementation Gecko.geckoview_nightly_arm

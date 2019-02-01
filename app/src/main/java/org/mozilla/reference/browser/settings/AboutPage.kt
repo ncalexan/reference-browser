@@ -10,7 +10,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.annotation.RawRes
 import org.mozilla.reference.browser.R
-import org.mozilla.geckoview.BuildConfig
+// import org.mozilla.geckoview.BuildConfig
 import org.mozilla.reference.browser.ext.replace
 
 object AboutPage {
@@ -21,7 +21,7 @@ object AboutPage {
         try {
             val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             val geckoVersion = packageInfo.versionCode.toString() + " \uD83E\uDD8E " +
-                BuildConfig.MOZ_APP_VERSION + "-" + BuildConfig.MOZ_APP_BUILDID
+                "" // BuildConfig.MOZ_APP_VERSION + "-" + BuildConfig.MOZ_APP_BUILDID
             String.format(
                 "%s (Build #%s)",
                 packageInfo.versionName,
