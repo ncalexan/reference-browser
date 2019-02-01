@@ -11,6 +11,8 @@ import mozilla.components.concept.engine.Engine
 
 object EngineProvider {
     fun getEngine(context: Context, defaultSettings: DefaultSettings): Engine {
-        return SystemEngine(context, defaultSettings)
+        var engine = SystemEngine(context, defaultSettings)
+        engine.settings.remoteDebuggingEnabled = true
+        return engine
     }
 }
